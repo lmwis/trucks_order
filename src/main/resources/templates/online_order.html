@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>共享货车--在线下单</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <script type="text/javascript" src="js/jquery-3.2.1.js"></script>
+    <link type="text/css" href="js/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link type="text/css" href="js/layui/css/layui.css" rel="stylesheet" />
+    <script type="text/javascript" src="js/bootstrap/dist/js/bootstrap.js"></script>
+    <script type="text/javascript" src="js/vue.js"></script>
+    <script type="text/javascript" src="js/request.js"></script>
+    <script type="text/javascript" src="js/component.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+    <script type="text/javascript" src="js/layui/layui.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            var flag=-1;
+            $(".truck_type tr td").click(function () {
+                flag=$(this)[0].cellIndex;
+                if(flag!=-1){
+                    $.each($(".truck_type tr td"),function (i,item) {
+                        if(i==flag);
+                        $(this).css("background","white");
+                    });
+                }
+                $(this).css("background","#8d868b");
+            });
+            var imgPath;
+            var app = new Vue({
+                el:".right-context",
+                data:{
+                    flag:flag,
+                    item_volume:"",
+                    order_img_path:"",
+                    order_time:"",
+                    order_time_line:"",
+                    order_start:"",
+                    order_end:"",
+                    contact:"",
+                    contact_tel:"",
+                    product_desc:"",
+                    price:""
+                },
+                methods:{
+                    submitData:function () {
+                        if(this.flag<=-1||this.order_time==""||this.order_start==""||this.order_end==""||this.contact==""
+                        ||this.contact_tel==""||this.product_desc==""||this.price==""){
+                            layui.use('layer', function(){
+                                var layer = layui.layer;
+                                layer.msg('不能为空');
+                                return ;
+                            });
+                            console.log(imgPath);
+                            // Ajax.publicOrder(this.item_volume,this.order_img_path,this.flag,this.order_time,this.order_start,this.order_end,this.contact,this.contact_tel,
+                            //     this.product_desc,this.price);
+                        }
+                    }
+                }
+            });
+            layui.use('upload', function(){
+                var upload = layui.upload;
+                //执行实例
+                var uploadInst = upload.render({
+                    elem: '#productImgUpload' //绑定元素
+                    ,url: '/upload/img' //上传接口
+                    ,done: function(res){//上传完毕回调
+                        if(res.status=="success"){
+                            imgPath = res.data;
+                        }else{
+                            layui.use('layer', function(){
+                                var layer = layui.layer;
+                                layer.msg(res.data.errMsg);
+                            });
+                        }
+                    }
+                    ,error: function(){
+                        //请求异常回调
+                        layui.use('layer', function(){
+                            var layer = layui.layer;
+                            layer.msg("系统或网络出错");
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+    <style rel="stylesheet">
+        *{
+            /*border:1px solid black;*/
+        }
+        .left{
+            float:left;
+            /*display:inline-block;*/
+            width:15%;
+            height:1000px;
+            border:1px solid black;
+        }
+        .right{
+            float:left;
+            border:1px solid black;
+            width:85%;
+            height:1000px;
+            text-align:center;
+            /*display:inline-block;*/
+        }
+        .right-top{
+            /*height:150px;*/
+            width:90%;
+            margin:0 auto;
+            text-align:center;
+        }
+        .truck_type tr:first-child td{
+            width:200px;
+            height:170px;
+        }
+        .truck_type td:hover{
+            cursor:pointer;
+        }
+        .footer{
+            background-color:#393D49;
+            width:100%;
+            height:60px;
+            position:fixed;
+            bottom:0px;
+        }
+        .right-form{
+            width:500px;
+        }
+        .submit_button{
+            position:relative;
+            top:-50px;
+            right:-630px;
+        }
+    </style>
+</head>
+<body>
+    <div class="left">
+        <div class="left1" style="text-align:center">
+            <img src="images/页面4图片/叫车.png" alt="">
+            <br>
+            <span>叫车</span>
+            <hr style="height:5px" >
+        </div>
+    </div>
+    <div class="right">
+        <div class="right-top">
+            <table class="truck_type">
+                <tr>
+                    <td><img src="images/页面4图片/图片1.png" alt="" width="170px" height="128px"></td>
+                    <td><img src="images/页面4图片/图片2.png" alt="" width="170px" height="128px"></td>
+                    <td><img src="images/页面4图片/图片3.png" alt="" width="170px" height="128px"></td>
+                    <td><img src="images/页面4图片/图片4.png" alt="" width="170px" height="128px"></td>
+                    <td><img src="images/页面4图片/图片5.png" alt="" width="170px" height="128px"></td>
+                </tr>
+                <tr>
+                    <td><span>小面包车</span></td>
+                    <td><span>中面包车</span></td>
+                    <td><span>小货车</span></td>
+                    <td><span>中货车</span></td>
+                    <td><span>大卡车</span></td>
+                </tr>
+            </table>
+        </div>
+        <hr>
+        <div class="right-context">
+            <form action="">
+            <div class="right-form">
+                <ul>
+                    <li>
+                        <button type="button" class="layui-btn upload-img" id="productImgUpload">
+                            <i class="layui-icon">&#xe67c;</i>货物图片上传
+                        </button>
+                    </li>
+                    <li>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon6">单位货物体积(长x宽x高)</span>
+                            <input type="text" class="form-control" placeholder="单位货物体积(长x宽x高)" aria-describedby="basic-addon1" v-model="item_volume">
+                        </div>
+                    </li>
+                    <li>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1">货运时间</span>
+                            <input type="text" class="form-control" placeholder="货运时间" aria-describedby="basic-addon1" v-model="order_time">
+                        </div>
+                    </li>
+                    <li>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon7">货运期限</span>
+                            <input type="text" class="form-control" placeholder="货运时间" aria-describedby="basic-addon1" v-model="order_time_line">
+                        </div>
+                    </li>
+                    <li>
+                    <li>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon2">货运起点和终点</span>
+                            <input type="text" class="form-control" placeholder="起点" aria-describedby="basic-addon1" v-model="order_start">
+                            <input type="text" class="form-control" placeholder="终点" aria-describedby="basic-addon1" v-model="order_end">
+                        </div>
+                    </li>
+                    </li>
+                    <li>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon3">联系人称呼</span>
+                            <input type="text" class="form-control" placeholder="称呼" aria-describedby="basic-addon1" v-model="contact">
+                        </div>
+                    </li>
+                    <li>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon4">联系人电话</span>
+                            <input type="text" class="form-control" placeholder="电话" aria-describedby="basic-addon1" v-model="contact_tel">
+                        </div>
+                    </li>
+                    <li>
+                        货物说明 <br>
+                        <textarea name="" id="" cols="30" rows="10" v-model="product_desc"></textarea>
+                    </li>
+                    <li>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon5">价格</span>
+                            <input type="text" class="form-control" placeholder="价格" aria-describedby="basic-addon1" v-model="price">
+                        </div>
+                    </li>
+                </ul>
+                <div class="submit_button">
+                    <div class="btn-group register-button" role="group" aria-label="...">
+                        <button class="btn btn-default" type="button" v-on:click.stop="submitData" value="登录">提交</button>
+                    </div>
+                    <div class="btn-group register-button" role="group" aria-label="...">
+                        <button class="btn btn-default" type="reset" value="登录">重置</button>
+                    </div>
+                </div>
+            </div>
+            </form>
+        </div>
+    </div>
+
+</body>
+<script type="text/javascript">
+
+</script>
+</html>

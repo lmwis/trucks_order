@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>共享货车--我的中心</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <script type="text/javascript" src="js/jquery-3.2.1.js"></script>
+    <link type="text/css" href="js/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link type="text/css" href="js/layui/css/layui.css" rel="stylesheet" />
+    <script type="text/javascript" src="js/bootstrap/dist/js/bootstrap.js"></script>
+    <script type="text/javascript" src="js/vue.js"></script>
+    <script type="text/javascript" src="js/request.js"></script>
+    <script type="text/javascript" src="js/component.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+    <script type="text/javascript" src="js/layui/layui.js"></script>
+    <style rel="stylesheet">
+        .left-nav{
+            margin-left:25%;
+            float:left;
+            /*display:inline-block;*/
+            width:180px;
+            height:600px;
+            border:1px solid black;
+        }
+        .right-context{
+            float:left;
+            border:1px solid black;
+            width:480px;
+            height:600px;
+            /*display:inline-block;*/
+        }
+        .footer{
+            background-color:#393D49;
+            width:100%;
+            height:60px;
+            position:fixed;
+            bottom:0px;
+        }
+    </style>
+</head>
+<body style="height:100%">
+<div class="header" style="height:60px;text-align:center">
+    <div style="float:left;margin:18px"><img src="images/页面1图片/logo.jpg" alt="" height="24px"></div>
+    <div style="display:inline-block;color:white; font-size:20px;margin-top: 30px;px">我的中心</div>
+    <ul class="self layui-nav" lay-filter="">
+        <li class="layui-nav-item">
+            <a href=""><div class=" glyphicon glyphicon-user my-center"></div></a>
+            <dl class="layui-nav-child">
+                <dd><a v-on:click.stop="userLogin" href="javascript:;">登录</a></dd>
+                <dd><a href="javascript:;">我的订单</a></dd>
+                <dd><a href="javascript:;">退出登录</a></dd>
+            </dl>
+        </li>
+    </ul>
+    <script type="text/javascript">
+        //注意：导航 依赖 element 模块，否则无法进行功能性操作
+        layui.use('element', function(){
+            var element = layui.element;
+
+            //…
+        });
+    </script>
+</div>
+<div style="clear:both"></div>
+<div class="border" style="text-align:center">
+    <div class="left-nav">
+        <ul style="margin-top:100px">
+            <li> <a href="user_info.html" target="frame">
+                个人信息
+            </a></li>
+            <li><a href="">
+                个人资料
+            </a></li>
+            <li><a href="">
+                我的订单
+            </a></li>
+        </ul>
+    </div>
+    <div class="right-context">
+        <iframe src="" name="frame" frameborder="0"></iframe>
+        <form>
+            <div>
+                <span>
+                    用户名：
+                </span>
+                <input type="text">
+            </div>
+            <br>
+            <div>
+              <span>
+                  性别：
+              </span>
+              <input type="text">
+            </div>
+            <br>
+            <div>
+                <span>
+                    年龄：
+                </span>
+                <input type="text">
+            </div>
+            <br>
+            <div>
+                <span>
+                    我的签名：
+                </span>
+                <input type="text">
+            </div>
+        </form>
+    </div>
+</div>
+<div style="clear:both"></div>
+<div class="footer"></div>
+</body>
+</html>

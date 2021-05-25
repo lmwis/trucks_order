@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>共享货车--在线下单</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <script type="text/javascript" src="js/jquery-3.2.1.js"></script>
+    <link type="text/css" href="js/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link type="text/css" href="js/layui/css/layui.css" rel="stylesheet" />
+    <script type="text/javascript" src="js/bootstrap/dist/js/bootstrap.js"></script>
+    <script type="text/javascript" src="js/vue.js"></script>
+    <script type="text/javascript" src="js/request.js"></script>
+    <script type="text/javascript" src="js/component.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+    <script type="text/javascript" src="js/layui/layui.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            var res = Ajax.getAllOrder();
+            if(res.status!="success"){
+                layui.use('layer', function(){
+                    var layer = layui.layer;
+                    layer.msg(res.data.errMsg);
+                });
+                return;
+            }
+            var data = res.data;
+            var context='';
+            $.each(data,function (i,order) {
+                context+='<td>';
+                context+='<ul>';
+                context+='<li>'+(order.name)+'</li>';
+                context+='<li>'+(order.name)+'</li>';
+                context+='<li>'+(order.name)+'</li>';
+                context+='<li>'+(order.name)+'</li>';
+                context+='</ul>';
+                context+='</td>';
+            });
+            console.log(context);
+            $("#orders").html(context);
+        });
+    </script>
+    <style rel="stylesheet">
+        *{
+            /*border:1px solid black;*/
+        }
+        .left{
+            float:left;
+            /*display:inline-block;*/
+            width:15%;
+            height:760px;
+            border:1px solid black;
+        }
+        .right{
+            float:left;
+            border:1px solid black;
+            width:85%;
+            height:760px;
+            text-align:center;
+            /*display:inline-block;*/
+        }
+        .right-top{
+            /*height:150px;*/
+            width:90%;
+            margin:0 auto;
+            text-align:center;
+        }
+        .truck_type tr:first-child td{
+            width:200px;
+            height:170px;
+        }
+        .truck_type td:hover{
+            cursor:pointer;
+        }
+        .footer{
+            background-color:#393D49;
+            width:100%;
+            height:60px;
+            position:fixed;
+            bottom:0px;
+        }
+        .right-form{
+            width:500px;
+        }
+        .submit_button{
+            position:relative;
+            top:-50px;
+            right:-630px;
+        }
+    </style>
+</head>
+<body>
+<div class="left">
+    <div class="left1" style="text-align:center">
+        <br>
+        <span>订单区</span>
+        <hr style="height:5px" >
+    </div>
+</div>
+<div class="right">
+    <div class="right-top">
+        <table id="orders">
+            <tr>
+
+            </tr>
+        </table>
+    </div>
+    <hr>
+</div>
+
+</body>
+<script type="text/javascript">
+</script>
+</html>

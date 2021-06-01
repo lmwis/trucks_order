@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <title>共享货车 </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" type="text/css" href="../static/css/index.css" />
-    <script type="text/javascript" src="../static/js/jquery-3.2.1.js"></script>
-    <link type="text/css" href="../static/js/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
-    <link type="text/css" href="../static/js/layui/css/layui.css" rel="stylesheet" />
-    <script type="text/javascript" src="../static/js/bootstrap/dist/js/bootstrap.js"></script>
-    <script type="text/javascript" src="../static/js/vue.js"></script>
-    <script type="text/javascript" src="../static/js/request.js"></script>
-    <script type="text/javascript" src="../static/js/component.js"></script>
-    <script type="text/javascript" src="../static/js/common.js"></script>
-    <script type="text/javascript" src="../static/js/layui/layui.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/index.css" />
+    <script type="text/javascript" src="../js/jquery-3.2.1.js"></script>
+    <link type="text/css" href="../js/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link type="text/css" href="../js/layui/css/layui.css" rel="stylesheet" />
+    <script type="text/javascript" src="../js/bootstrap/dist/js/bootstrap.js"></script>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <script type="text/javascript" src="../js/request.js"></script>
+    <script type="text/javascript" src="../js/component.js"></script>
+    <script type="text/javascript" src="../js/common.js"></script>
+    <script type="text/javascript" src="../js/layui/layui.js"></script>
     <script type="text/javascript">
         $(function () {
             var index = 1;
@@ -25,7 +25,7 @@
                 }
 
                 $(".turn-container img").fadeOut("default", function () {
-                    $(".turn-container img").attr("src", "images/页面1图片/轮播图/0" + index + ".jpg");
+                    $(".turn-container img").attr("src", "../images/页面1图片/轮播图/0" + index + ".jpg");
                 });
                 $(".turn-container img").fadeIn();
             };
@@ -36,12 +36,12 @@
 <body>
 
 <div class="header">
-    <div style="float:left;margin:18px"><img src="../static/images/页面1图片/logo.jpg" alt="" height="24px"></div>
+    <div style="float:left;margin:18px"><img src="../images/页面1图片/logo.jpg" alt="" height="24px"></div>
     <ul class="nav layui-nav" lay-filter="">
-        <li class="layui-nav-item layui-this"><a href="home_page.html"><span>首页</span></a></li>
-        <li class="layui-nav-item"><a href="#" v-on:click.stop="userLogin" ><span>用户加入</span></a></li>
-        <li class="layui-nav-item"><a href="#" v-on:click.stop="driverLogin"><span>司机加入</span></a></li>
-        <li class="layui-nav-item"><a href="#" v-on:click.stop="onlineOrderPage"><span>在线下单</span></a></li>
+        <li class="layui-nav-item layui-this"><a href="index"><span>首页</span></a></li>
+        <li class="layui-nav-item"><a href="user_login" v-on:click.stop="userLogin" ><span>用户加入</span></a></li>
+        <li class="layui-nav-item"><a href="driver_login" v-on:click.stop="driverLogin"><span>司机加入</span></a></li>
+        <li class="layui-nav-item"><a href="online_order" v-on:click.stop="onlineOrderPage"><span>在线下单</span></a></li>
         <li class="layui-nav-item"><a href=""><span>司机接单</span></a></li>
     </ul>
     <ul class="self layui-nav" lay-filter="">
@@ -66,7 +66,7 @@
 
 <div class="body">
     <div class="turn-container">
-        <img src="../static/images/页面1图片/轮播图/01.jpg" width="100%" height="100%">
+        <img src="../images/页面1图片/轮播图/01.jpg" width="100%" height="100%">
     </div>
 </div>
 <div class="footer">
@@ -74,10 +74,10 @@
     <div class="info">
         <table>
             <tr>
-                <td><img src="../static/images/页面1图片/为什么选择此平台图片/图片1.png" alt=""></td>
-                <td><img src="../static/images/页面1图片/为什么选择此平台图片/图片2.png" alt=""></td>
-                <td><img src="../static/images/页面1图片/为什么选择此平台图片/图片3.png" alt=""></td>
-                <td><img src="../static/images/页面1图片/为什么选择此平台图片/图片4.png" alt=""></td>
+                <td><img src="../images/页面1图片/为什么选择此平台图片/图片1.png" alt=""></td>
+                <td><img src="../images/页面1图片/为什么选择此平台图片/图片2.png" alt=""></td>
+                <td><img src="../images/页面1图片/为什么选择此平台图片/图片3.png" alt=""></td>
+                <td><img src="../images/页面1图片/为什么选择此平台图片/图片4.png" alt=""></td>
             </tr>
             <tr>
                 <td><br/><span>快速响应<br/>立刻下单，立马响应随叫随到</span></td>

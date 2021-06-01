@@ -17,6 +17,7 @@
     <script type="text/javascript">
         $(function () {
             var index = 1;
+            let timer = null;
             //轮播图
             var play = function () {
                 index++;
@@ -28,8 +29,9 @@
                     $(".turn-container img").attr("src", "../images/页面1图片/轮播图/0" + index + ".jpg");
                 });
                 $(".turn-container img").fadeIn();
+                timer =null
             };
-            var turn = setInterval(play,3000);
+            timer = setInterval(play,3000);
         });
     </script>
 </head>

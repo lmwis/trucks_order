@@ -30,6 +30,14 @@ public class AdminController extends BaseController {
     @Autowired
     AdminService adminService;
 
+    /**
+     * 管理员登陆
+     * @param res
+     * @param username
+     * @param password
+     * @return
+     * @throws BusinessException
+     */
     @RequestMapping(value = "login",method = RequestMethod.POST)
     @ResponseBody
     public CommonReturnType login(HttpServletRequest res, @RequestParam("username") String username, @RequestParam("password") String password) throws BusinessException {
@@ -48,6 +56,25 @@ public class AdminController extends BaseController {
         throw new BusinessException(EmBusinessError.LOGIN_ERROR,"账号或密码错误");
     }
 
+    /**
+     * 修改订单
+     * @param orderId
+     * @param status
+     * @param imgs
+     * @param itemCount
+     * @param itemVolume
+     * @param truckType
+     * @param orderTimeLine
+     * @param orderTime
+     * @param orderStart
+     * @param orderEnd
+     * @param contact
+     * @param contactTel
+     * @param productDesc
+     * @param price
+     * @return
+     * @throws BusinessException
+     */
     @RequestMapping(value = "saveOrderChange",method = RequestMethod.POST,produces = "application/json;charset=utf-8")
     public CommonReturnType saveOrderChange(@RequestParam("order_id[]")String[] orderId,
                                             @RequestParam("status[]")String[] status,
@@ -92,6 +119,12 @@ public class AdminController extends BaseController {
         return CommonReturnType.create(null);
     }
 
+    /**
+     * 删除订单
+     * @param orderId
+     * @return
+     * @throws BusinessException
+     */
     @RequestMapping(value = "delOrder",method = RequestMethod.POST,produces = "application/json;charset=utf-8")
     public CommonReturnType delOrder(@RequestParam("order_id")String orderId) throws BusinessException {
 
@@ -100,6 +133,12 @@ public class AdminController extends BaseController {
         //返回数据
         return CommonReturnType.create(null);
     }
+
+    /**
+     * 获取所有用户
+     * @return
+     * @throws BusinessException
+     */
     @RequestMapping(value = "getAllUser",method = RequestMethod.GET,produces = "application/json;charset=utf-8")
     public CommonReturnType getAllUser() throws BusinessException {
 
@@ -107,6 +146,12 @@ public class AdminController extends BaseController {
         return CommonReturnType.create(adminService.getAllUser());
     }
 
+    /**
+     * 删除用户
+     * @param userId
+     * @return
+     * @throws BusinessException
+     */
     @RequestMapping(value = "delUser",method = RequestMethod.POST,produces = "application/json;charset=utf-8")
     public CommonReturnType delUser(@RequestParam("user_id")String userId) throws BusinessException {
 
@@ -116,7 +161,15 @@ public class AdminController extends BaseController {
         return CommonReturnType.create(null);
     }
 
-
+    /**
+     * 修改用户
+     * @param user_id
+     * @param nickname
+     * @param email
+     * @param password
+     * @return
+     * @throws BusinessException
+     */
     @PostMapping(value = "saveUserChange",produces = "application/json;charset=utf-8")
     public CommonReturnType saveUserChange(@RequestParam("user_id[]")String[] user_id,
                                            @RequestParam("nickname[]")String[] nickname,
@@ -167,7 +220,7 @@ public class AdminController extends BaseController {
             DriverDO driverDO = new DriverDO();
             driverDO.setDriverId(Integer.parseInt(driverId[i]));
             driverDO.setDriverName(driver_name[i]);
-            driverDO.setDriverSex(driver_sex[i]=="男"?0:1);
+            driverDO.setDriverSex("男".equals(driver_sex[i])?0:1);
             driverDO.setDriverAge(Integer.parseInt(driver_age[i]));
             driverDO.setPassword(password[i]);
             userDOList.add(driverDO);

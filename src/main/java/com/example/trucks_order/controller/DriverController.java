@@ -24,6 +24,22 @@ public class DriverController extends BaseController{
     @Autowired
     DriverService driverService;
 
+    /**
+     * 司机注册
+     * @param name
+     * @param sex
+     * @param age
+     * @param tel
+     * @param img1_path
+     * @param img2_path
+     * @param img3_path
+     * @param img4_path
+     * @param img5_path
+     * @param password
+     * @param passwordAgain
+     * @return
+     * @throws BusinessException
+     */
     @PostMapping(value = "register",produces = "application/json;charset=utf-8")
     public CommonReturnType register(String name, String sex, String age,
                                      String tel,String img1_path,String img2_path,
@@ -60,6 +76,13 @@ public class DriverController extends BaseController{
         return CommonReturnType.create(driverDO1);
     }
 
+    /**
+     * 司机接单
+     * @param driver_id
+     * @param order_id
+     * @return
+     * @throws BusinessException
+     */
     @GetMapping(value = "addOrder",produces = "application/json;charset=utf-8")
     public CommonReturnType register(String driver_id,String order_id) throws BusinessException {
 
@@ -76,7 +99,12 @@ public class DriverController extends BaseController{
         return CommonReturnType.create(null);
     }
 
-
+    /**
+     * 完成订单
+     * @param order_id
+     * @return
+     * @throws BusinessException
+     */
     @GetMapping(value = "finishOrder",produces = "application/json;charset=utf-8")
     public CommonReturnType finishOrder(String order_id) throws BusinessException {
 
@@ -88,6 +116,14 @@ public class DriverController extends BaseController{
         driverService.finishOrder(Integer.parseInt(order_id));
         return CommonReturnType.create(null);
     }
+
+    /**
+     * 取消订单吗
+     * @param driver_id
+     * @param order_id
+     * @return
+     * @throws BusinessException
+     */
     @GetMapping(value = "cancelOrder",produces = "application/json;charset=utf-8")
     public CommonReturnType cancelOrder(String driver_id,String order_id) throws BusinessException {
 

@@ -27,6 +27,12 @@ public class OrderController {
 
     String filePath="D:\\trucks_order_img\\";
 
+    /**
+     * 图片上传
+     * @param file
+     * @return
+     * @throws BusinessException
+     */
     @RequestMapping(value = "/uploadDataImg",method = RequestMethod.POST)
     @ResponseBody
     public CommonReturnType uploadData(MultipartFile file) throws BusinessException {
@@ -49,6 +55,24 @@ public class OrderController {
 
         return CommonReturnType.create(path);
     }
+
+    /**
+     * 下订单
+     * @param itemCount
+     * @param itemVolume
+     * @param orderImgPath
+     * @param truckType
+     * @param orderTimeLine
+     * @param orderTime
+     * @param orderStart
+     * @param orderEnd
+     * @param contact
+     * @param contactTel
+     * @param productDesc
+     * @param price
+     * @return
+     * @throws BusinessException
+     */
     @RequestMapping(value = "publishOrder",method = RequestMethod.POST,produces = "application/json;charset=utf-8")
     public CommonReturnType publishOrder(@RequestParam("item_count")String itemCount,
                                          @RequestParam("item_volume")String itemVolume,

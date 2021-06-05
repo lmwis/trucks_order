@@ -33,6 +33,16 @@ public class UserController extends BaseController{
     @Autowired
     DriverService driverService;
 
+    /**
+     *
+     * @param response
+     * @param request
+     * @param email
+     * @param password
+     * @param user_type user-用户登陆，driver-司机登陆
+     * @return
+     * @throws BusinessException
+     */
     @RequestMapping(value = "login",method = RequestMethod.POST)
     public CommonReturnType login(HttpServletResponse response, HttpServletRequest request, String email, String password, String user_type) throws BusinessException {
         //判空处理

@@ -5,7 +5,7 @@
     <title>Title</title><meta charset="UTF-8">
     <title>共享货车--用户登陆</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <link rel="stylesheet" type="text/css" href="../css/index.css" />
     <script type="text/javascript" src="../js/jquery-3.2.1.js"></script>
     <link type="text/css" href="../js/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
     <link type="text/css" href="../js/layui/css/layui.css" rel="stylesheet" />
@@ -26,7 +26,7 @@
                     index=1;
                 }
                 $(".turn-container img").fadeOut("default",function(){
-                    $(".turn-container img").attr("src","images/页面1图片/轮播图/0"+index+".jpg");
+                    $(".turn-container img").attr("src","../images/页面1图片/轮播图/0"+index+".jpg");
                 });
                 $(".turn-container img").fadeIn();
             };
@@ -105,7 +105,7 @@
 </head>
 <body>
 <div class="header">
-    <div style="float:left;margin:18px"><img src="images/页面1图片/logo.jpg" alt="" height="24px"></div>
+    <div style="float:left;margin:18px"><img src="../images/页面1图片/logo.jpg" alt="" height="24px"></div>
     <ul class="nav layui-nav" lay-filter="">
         <li class="layui-nav-item"><a href="home_page.html"><span>首页</span></a></li>
         <li class="layui-nav-item layui-this"><a href="#" v-on:click.stop="userLogin" ><span>用户加入</span></a></li>
@@ -134,14 +134,14 @@
 </div>
 <div class="body">
     <div class="turn-container">
-        <img src="images/页面1图片/轮播图/01.jpg" width="100%" height="100%">
+        <img src="../images/页面1图片/轮播图/01.jpg" width="100%" height="100%">
     </div>
     <div class="form">
         <div id="register-form">
             <ul>
                 <li>
                     <div class="logo2">
-                        <img src="images/页面2图片/logo2.png" alt="注册" width="250px" height="70px">
+                        <img src="../images/页面2图片/logo2.png" alt="注册" width="250px" height="70px">
                     </div>
                 </li>
                 <li>

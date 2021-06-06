@@ -14,6 +14,10 @@ public class PageController {
     public String index(){
         return "home_page_index";
     }
+    @RequestMapping("home_page")
+    public String homePage(){
+        return "home_page_index";
+    }
     @RequestMapping("user_login")
     public String userLogin(){
         return "user_login_page";
@@ -21,6 +25,10 @@ public class PageController {
     @RequestMapping("driver_login")
     public String driverLogin(){
         return "driver_login_page";
+    }
+    @RequestMapping("driver_receive")
+    public String driverReceive(){
+        return "driver_receive";
     }
     @RequestMapping("online_order")
     public String onlineOrder(){

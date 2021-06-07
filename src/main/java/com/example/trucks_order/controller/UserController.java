@@ -11,7 +11,6 @@ import com.example.trucks_order.service.DriverService;
 import com.example.trucks_order.service.UserService;
 import com.example.trucks_order.service.model.UserModel;
 import com.example.trucks_order.util.CookieUtil;
-import com.example.trucks_order.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,7 +22,7 @@ import javax.servlet.http.HttpSession;
 /**
  * @author lmwis on 2019-04-09 14:19
  */
-@RestController("/user")
+@RestController("user")
 @RequestMapping("/user")
 @CrossOrigin(allowCredentials = "true",allowedHeaders = "*")
 public class UserController extends BaseController{

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class PageController {
     @RequestMapping("index")
     public String index(){
-        return "home_page_index";
+        return "home_page_index.html";
     }
     @RequestMapping("home_page")
     public String homePage(){

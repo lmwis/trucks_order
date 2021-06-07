@@ -13,9 +13,9 @@ public class InterceptorConfig extends WebMvcConfigurationSupport {
 //        super.addInterceptors(registry);
 //    }
 
-    @Override
-    protected void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/**").addResourceLocations("classpath:/static/");
-        super.addResourceHandlers(registry);
-    }
+//    @Override
+//    protected void addResourceHandlers(ResourceHandlerRegistry registry) {
+//        registry.addResourceHandler("/**").addResourceLocations("classpath:/static/");
+//        super.addResourceHandlers(registry);
+//    }
 }

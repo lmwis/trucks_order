@@ -1,7 +1,6 @@
 package com.example.trucks_order.compent;
 
 import org.springframework.beans.factory.InitializingBean;
-import org.springframework.stereotype.Component;
 
 /**
  * @author lmwis on 2019-04-25 11:09

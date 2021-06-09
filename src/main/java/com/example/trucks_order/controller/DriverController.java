@@ -40,7 +40,7 @@ public class DriverController extends BaseController{
      * @return
      * @throws BusinessException
      */
-    @PostMapping(value = "register",produces = "application/json;charset=utf-8")
+    @PostMapping(value = "/register",produces = "application/json;charset=utf-8")
     public CommonReturnType register(String name, String sex, String age,
                                      String tel,String img1_path,String img2_path,
                                      String img3_path,String img4_path,String img5_path
@@ -83,7 +83,7 @@ public class DriverController extends BaseController{
      * @return
      * @throws BusinessException
      */
-    @GetMapping(value = "addOrder",produces = "application/json;charset=utf-8")
+    @GetMapping(value = "/addOrder",produces = "application/json;charset=utf-8")
     public CommonReturnType register(String driver_id,String order_id) throws BusinessException {
 
         //判空处理
@@ -105,7 +105,7 @@ public class DriverController extends BaseController{
      * @return
      * @throws BusinessException
      */
-    @GetMapping(value = "finishOrder",produces = "application/json;charset=utf-8")
+    @GetMapping(value = "/finishOrder",produces = "application/json;charset=utf-8")
     public CommonReturnType finishOrder(String order_id) throws BusinessException {
 
         //判空处理

@@ -2,6 +2,7 @@ package com.example.trucks_order.service;
 
 import com.example.trucks_order.dataobject.OrderDO;
 import com.example.trucks_order.error.BusinessException;
+import org.hibernate.criterion.Order;
 
 import java.util.List;
 
@@ -53,4 +54,5 @@ public interface OrderService {
      */
     public void changeOrderStatus2Pre(Integer orderId) throws BusinessException;
 
+    public List<OrderDO> getReceiveOrder();
 }

@@ -97,6 +97,19 @@ public class OrderServiceImpl implements OrderService {
         changeStatus(orderDO,0);
     }
 
+    @Override
+    public List<OrderDO> getReceiveOrder() {
+        List<OrderDO> orderDOS = orderDOMapper.selectAll();
+        List<OrderDO> res = new ArrayList<>();
+        // 0为未接,1为已接,2为已完成
+        orderDOS.forEach(k->{
+            if(k.getStatus()==0){
+                res.add(k);
+            }
+        });
+        return res;
+    }
+
     private void changeStatus(OrderDO orderDO,Integer code){
 
         orderDO.setStatus(code);

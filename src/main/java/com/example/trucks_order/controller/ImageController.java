@@ -35,7 +35,8 @@ public class ImageController extends BaseController{
 //    ConferenceService conferenceService;
 
 //    String basepath= "/home/fehead/resources/";
-    String basepath= "D:\\trucks_order_img\\";
+//    String basepath= "D:\\trucks_order_img\\";
+    String basepath = "/Users/lmwis/other/truks_order_img/";
 
     /**
      * 上传图片
@@ -73,7 +74,7 @@ public class ImageController extends BaseController{
      */
     @RequestMapping(value = "/upload_img",method = RequestMethod.POST, produces = "application/json;charset=utf-8")
     @ResponseBody
-    public CommonReturnType uploadPicture1(HttpServletRequest request, HttpServletResponse response,
+    public CommonReturnType uploadPicture(HttpServletRequest request, HttpServletResponse response,
                                            @RequestParam("file") MultipartFile multipartFile) throws Exception {
         System.out.println(multipartFile);
         String fileName= StringUtil.reName(multipartFile.getOriginalFilename());

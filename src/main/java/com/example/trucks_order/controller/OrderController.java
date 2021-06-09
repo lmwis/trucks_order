@@ -59,21 +59,21 @@ public class OrderController {
     /**
      * 下订单
      * @param itemCount
-     * @param itemVolume
-     * @param orderImgPath
-     * @param truckType
-     * @param orderTimeLine
-     * @param orderTime
-     * @param orderStart
-     * @param orderEnd
-     * @param contact
-     * @param contactTel
-     * @param productDesc
-     * @param price
+     * @param itemVolume 货物体积
+     * @param orderImgPath 货物图片
+     * @param truckType 货车类型
+     * @param orderTimeLine 货运期限
+     * @param orderTime 货运时间
+     * @param orderStart 起点
+     * @param orderEnd 终点
+     * @param contact 联系人
+     * @param contactTel 联系人电话
+     * @param productDesc 描述
+     * @param price 价格
      * @return
      * @throws BusinessException
      */
-    @RequestMapping(value = "publishOrder",method = RequestMethod.POST,produces = "application/json;charset=utf-8")
+    @RequestMapping(value = "/publishOrder",method = RequestMethod.POST,produces = "application/json;charset=utf-8")
     public CommonReturnType publishOrder(@RequestParam("item_count")String itemCount,
                                          @RequestParam("item_volume")String itemVolume,
                                          @RequestParam("order_img_path")String orderImgPath,
@@ -113,7 +113,7 @@ public class OrderController {
      * 获取所有订单信息
      * @return
      */
-    @RequestMapping(value = "getAll",method = RequestMethod.GET,produces = "application/json;charset=utf-8")
+    @RequestMapping(value = "/getAll",method = RequestMethod.GET,produces = "application/json;charset=utf-8")
     public CommonReturnType getAll(){
         return CommonReturnType.create(orderService.getAllOrder());
     }
@@ -121,8 +121,12 @@ public class OrderController {
      * 获取指定司机的订单
      * @return
      */
-    @RequestMapping(value = "getMy",method = RequestMethod.GET,produces = "application/json;charset=utf-8")
+    @RequestMapping(value = "/getMy",method = RequestMethod.GET,produces = "application/json;charset=utf-8")
     public CommonReturnType getMy(String driver_id){
         return CommonReturnType.create(orderService.getByDriverId(Integer.parseInt(driver_id)));
+    }
+    @RequestMapping(value = "/getReceive",method = RequestMethod.GET,produces = "application/json;charset=utf-8")
+    public CommonReturnType getReceiveAbleOrder(){
+        return CommonReturnType.create(orderService.getReceiveOrder());
     }
 }

@@ -1,3 +1,0 @@
-$(function () {
-    $(".my-center").bind()
-});
